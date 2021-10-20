@@ -17,7 +17,7 @@ public class quantity {
         JFrame frame = new JFrame("Benzinarie");
         textField = new JTextField(40);
         textField.setFont(new Font("Georgia", Font.ROMAN_BASELINE, 20));
-        textField.setBounds(0,0,20,10);
+        textField..setMaximumSize(new Dimension(600,30));
         button = new JButton("OK");
         button.setFont(new Font("Georgia", Font.ROMAN_BASELINE, 20));
         button.addActionListener(new ActionListener() {
