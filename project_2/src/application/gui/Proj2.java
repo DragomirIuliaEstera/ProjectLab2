@@ -65,8 +65,7 @@ public class Proj2{
 
         textField1=new JTextField();
         textField1.setFont(new Font("Georgia", Font.ROMAN_BASELINE, 20));
-        textField1.setPreferredSize(new Dimension(50,30));
-//        textField1.setBackground(Color.yellow);
+        textField1.setMaximumSize(new Dimension(600,30));
 
         okButton = new JButton("OK");
         okButton.setFont(new Font("Georgia", Font.ROMAN_BASELINE, 20));
