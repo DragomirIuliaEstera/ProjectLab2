@@ -1,7 +1,6 @@
 package application.gui;
 
-import application.classes.OperationSummary;
-
+import application.classes.Product;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,7 +24,6 @@ public class Proj2{
 
         panel = new JPanel();
         panel.setBounds(0,0,400,400);
-//        panel.setBackground(Color.gray);
         panel.setLayout(new BoxLayout(panel,BoxLayout.PAGE_AXIS));
 
         labelMenu = new JLabel("Combustibili:");
@@ -74,7 +72,30 @@ public class Proj2{
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new quantity();
+
+                String option = textField1.getText();
+                Product prod = null;
+                switch(option){
+                    case "1":
+                        prod = new Product("Benzina Standard 95", (float) 5.94);
+                        break;
+                    case "2":
+                        prod = new Product("Benzina Extra 99", (float) 6.33);
+                        break;
+                    case "3":
+                        prod = new Product("Motorina Standard", (float) 5.43);
+                        break;
+                    case "4":
+                        prod = new Product("Motorina Euro Diesel 5", (float) 5.71);
+                        break;
+                    case "5":
+                        prod = new Product("GPL", (float) 3.21);
+                        break;
+                    default:
+                        System.out.println("Optiunea introdusa nu este valida.");
+                }
+
+                new quantity(prod);
             }
         });
 
