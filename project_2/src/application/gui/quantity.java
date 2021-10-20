@@ -1,6 +1,7 @@
 package application.gui;
 
 import application.classes.OperationSummary;
+import application.classes.Product;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,19 +14,24 @@ public class quantity {
     private JLabel label;
     private JPanel panel;
 
-    public quantity(){
+    public quantity(Product prod){
         JFrame frame = new JFrame("Benzinarie");
         textField = new JTextField(40);
         textField.setFont(new Font("Georgia", Font.ROMAN_BASELINE, 20));
-        textField..setMaximumSize(new Dimension(600,30));
+        textField.setMaximumSize(new Dimension(600,30));
         button = new JButton("OK");
         button.setFont(new Font("Georgia", Font.ROMAN_BASELINE, 20));
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                String quantity = textField.getText();
+                float value = Float.parseFloat(quantity);
+                float final_price = prod.get_price()*value;
+
                 int reply = JOptionPane.showConfirmDialog(null,"Finalizati comanda?","Confirmare comanda", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
                 if (reply == JOptionPane.YES_OPTION) {
-                    OperationSummary opSummary = new OperationSummary();
+                    OperationSummary opSummary = new OperationSummary(prod.get_name(),value,final_price);
                     System.out.println(opSummary.toString());
                 } else {
                     return;
@@ -49,8 +55,5 @@ public class quantity {
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
-    }
-    public static void main(String[] args){
-        new quantity();
     }
 }
